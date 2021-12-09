@@ -26,16 +26,24 @@ services:
     - dev.env
     expose:
     - "8080"
-  nginx: 
-    container_name: nginx
+  nginx:
     image: nginx:latest
+    restart: unless-stopped
     volumes:
       - ./nginx.dev:/etc/nginx/nginx.conf
-    depends_on: 
-      - backend
-      - frontend
+      - ./certs/conf:/etc/letsencrypt
+      - ./certs/www:/var/www/certbot
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
+      - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./certs/conf:/etc/letsencrypt
+      - ./certs/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 volumes:
   db:
