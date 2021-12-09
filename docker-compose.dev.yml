@@ -4,6 +4,7 @@ services:
     container_name: backend
     image: docker.io/desoprotocol/backend:latest
     command: run
+    restart: on-failure
     volumes:
     - db:/db
     ports:
