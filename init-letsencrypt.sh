@@ -1,7 +1,7 @@
 #!/bin/bash
 
 DOCKER_COMPOSE_FILENAME=docker-compose.dev.yml
-DOMAINS=(d3s0.club www.d3s0.club)
+DOMAINS=(d3s0.club www.d3s0.club node.d3s0.club api.d3s0.club)
 RSA_KEY_SIZE=4096
 DATA_PATH="./data/certbot"
 EMAIL="webmaster@d3s0.club" # Adding a valid address is strongly recommended

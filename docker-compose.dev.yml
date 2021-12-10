@@ -15,6 +15,9 @@ services:
     expose:
     - "17001"
     - "17000"
+  static:
+    container_name: static
+    image: d3s0-static:latest
   frontend:
     container_name: frontend 
     image: docker.io/desoprotocol/frontend:latest
@@ -37,11 +40,13 @@ services:
     depends_on: 
       - backend
       - frontend
+      - static
     ports:
-      - "80:80"
+      - "81:80"
       - "443:443"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   certbot:
+    container_name: certbot
     image: certbot/certbot
     restart: unless-stopped
     volumes:
