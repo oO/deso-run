@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_COMPOSE_FILENAME=docker-compose.dev.yml
+DOCKER_COMPOSE_FILENAME=docker-compose.yml
 DOMAINS=(d3s0.club www.d3s0.club node.d3s0.club api.d3s0.club)
 RSA_KEY_SIZE=4096
 DATA_PATH="./data/certbot"
