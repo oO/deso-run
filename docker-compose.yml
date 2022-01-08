@@ -2,11 +2,12 @@ version: "3.7"
 services:
   backend:
     container_name: backend
-    image: docker.io/desoprotocol/backend:latest
+#    image: docker.io/desoprotocol/backend:latest
+    image: d3s0/backend
     command: run
     restart: on-failure
     volumes:
-    - /mnt/disks/DeSoData:/db
+    - /mnt/disks/DeSoData/deso:/db
     ports:
     - 17001:17001
     - 17000:17000
@@ -17,7 +18,7 @@ services:
     - "17000"
   static:
     container_name: static
-    image: d3s0-static:latest
+    image: d3s0/static:latest
   frontend:
     container_name: frontend 
     image: docker.io/desoprotocol/frontend:latest

@@ -16,6 +16,7 @@
         bithunt.bitclout.com pulse.bitclout.com
         api.bitpop.dev
         deso.run:* api.deso.run:*
+	node.deso.org:*
         localhost:*
         explorer.bitclout.com:*
         https://api.blockchain.com/ticker
